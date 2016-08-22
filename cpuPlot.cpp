@@ -67,8 +67,9 @@ public:
         QColor c = color;
         c.setAlpha(150);
 
-        setPen(QPen(Qt::NoPen));
-        setBrush(c);
+        setPen(c);
+//        setPen(QPen(Qt::NoPen));//绘制折线图
+//        setBrush(c);//用于绘制矩形区域
     }
 
 
@@ -160,11 +161,11 @@ CputPlot::CputPlot(QWidget *parent) :
         timeData[HISTORY - 1 -var] = var;
      startTimer(1000);//不知道为什么前面要加一个void，已去掉
 
-     connect( legend, SIGNAL( checked( const QVariant &, bool, int ) ),this,SLOT( legendChecked( const QVariant &, bool ) ) );
+     connect( legend, SIGNAL( checked( const QVariant &, bool, int ) ),SLOT( legendChecked( const QVariant &, bool ) ) );
 
 }
 
-CputPlot::~CputPlot(){}
+//CputPlot::~CputPlot(){}
 
 void CputPlot::timerEvent(QTimerEvent *)
 {
@@ -214,7 +215,7 @@ void CputPlot::showCurve(QwtPlotItem *item, bool b)
         if(legendLabel){
             legendLabel->setChecked(b);
         }
-    }//费心费力，难道就为了得到一个label
+    }//费心费力，难道就为了得到一个label,然后去改变他的状态
 
     replot();
 }

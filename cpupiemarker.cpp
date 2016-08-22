@@ -39,7 +39,7 @@ void CpuPieMarker::draw(QPainter *painter,
             const int value = static_cast<int>( 5760 * curve->sample(0).y() / 100);//0，又是什么意思？
 
             painter->save();//保存一个画家的状态，修改，然后在恢复。
-            painter->setBrush(QBrush( curve->brush().color(),Qt::SolidPattern));//获取和折线相同的颜色。
+            painter->setBrush(QBrush( curve->pen().color(),Qt::SolidPattern));//获取和折线相同的颜色。
             if ( value != 0){
                 painter->drawPie(pieRect,-angle,-value);
                 // a full circle equals 5760 (16 * 360) 角度a和alen是1/16度，也就是说一个完整的圆等于5760（16*360）。

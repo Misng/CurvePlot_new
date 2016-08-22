@@ -20,6 +20,7 @@
 
 class CputPlot : public QwtPlot
 {
+    Q_OBJECT
 public:
     enum CpuData
     {
@@ -31,8 +32,8 @@ public:
         NCputData
     };
 
-    CputPlot(QWidget * = 0);
-    virtual ~CputPlot();
+    explicit CputPlot(QWidget * = 0);
+//    virtual ~CputPlot() {}
 
     const QwtPlotCurve * cpuCurve ( int id ) const
     {
